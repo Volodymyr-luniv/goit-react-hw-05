@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import placeholder from "../../assets/images/photo-film.jpg";
 
 const MovieReviews = () => {
 	const { movieId } = useParams();
@@ -33,7 +34,7 @@ const MovieReviews = () => {
 							src={
 								review.author_details.avatar_path
 									? `https://image.tmdb.org/t/p/w500${review.author_details.avatar_path}`
-									: "path_to_default_image"
+									: placeholder
 							}
 							alt={review.author}
 							width="50"

@@ -20,6 +20,12 @@ const MoviesPage = () => {
 		setMovies(response.data.results);
 	};
 
+	const handleKeyPress = (event) => {
+		if (event.key === "Enter") {
+			handleSearch();
+		}
+	};
+
 	return (
 		<div className={s.moviesPage}>
 			<input
@@ -27,6 +33,7 @@ const MoviesPage = () => {
 				value={query}
 				className={s.searchInput}
 				onChange={(e) => setQuery(e.target.value)}
+				onKeyPress={handleKeyPress}
 			/>
 			<button className={s.searchButton} onClick={handleSearch}>
 				Search

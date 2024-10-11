@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import s from "./MovieDetailsPage.module.css";
+import placeholder from "../../assets/images/photo-film.jpg";
+
 const MovieDetailsPage = () => {
 	const { movieId } = useParams();
 	const [movie, setMovie] = useState(null);
@@ -45,7 +47,7 @@ const MovieDetailsPage = () => {
 				src={
 					movie.poster_path
 						? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-						: "path_to_default_image"
+						: placeholder
 				}
 				alt={movie.title}
 			/>

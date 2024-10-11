@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import s from "./MovieCast.module.css";
+import placeholder from "../../assets/images/photo-film.jpg";
 
 const MovieCast = () => {
 	const { movieId } = useParams();
@@ -43,7 +44,7 @@ const MovieCast = () => {
 							src={
 								actor.profile_path
 									? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-									: "path_to_default_image"
+									: placeholder
 							}
 							alt={actor.name}
 						/>

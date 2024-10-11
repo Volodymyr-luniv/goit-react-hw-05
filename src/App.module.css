@@ -47,6 +47,10 @@ h3 {
 	margin: 10px 0;
 }
 
+li {
+	list-style-type: none;
+}
+
 .button {
 	background-color: #6b8fb6;
 	color: white;

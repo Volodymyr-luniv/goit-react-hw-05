@@ -1,5 +1,11 @@
-import { useState, useEffect } from "react";
-import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import {
+	Link,
+	useParams,
+	Outlet,
+	useNavigate,
+	useLocation,
+} from "react-router-dom";
 import axios from "axios";
 import s from "./MovieDetailsPage.module.css";
 import placeholder from "../../assets/images/photo-film.jpg";
@@ -8,7 +14,12 @@ const MovieDetailsPage = () => {
 	const { movieId } = useParams();
 	const [movie, setMovie] = useState(null);
 	const [error, setError] = useState(null);
+
 	const navigate = useNavigate();
+
+	const location = useLocation();
+
+	const prevLocationRef = useRef(location.state?.from || "/");
 
 	useEffect(() => {
 		const fetchMovieDetails = async () => {
@@ -31,7 +42,7 @@ const MovieDetailsPage = () => {
 		fetchMovieDetails();
 	}, [movieId]);
 
-	const goBack = () => navigate(-1);
+	const goBack = () => navigate(prevLocationRef.current);
 
 	if (error) return <p className={s.error}>Error: {error.message}</p>;
 	if (!movie) return <p className={s.loading}>Loading...</p>;
@@ -60,7 +71,7 @@ const MovieDetailsPage = () => {
 					Reviews
 				</Link>
 			</div>
-			<Outlet />{" "}
+			<Outlet />
 		</div>
 	);
 };
